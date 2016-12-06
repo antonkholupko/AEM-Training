@@ -25,9 +25,9 @@
     <orderEntry type="library" name="Maven: com.day.commons:day-commons-gfx:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: com.day.commons:day-commons-any:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.day.commons:day-commons-text:1.1.3" level="project" />
-    <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle:2.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.5" level="project" />
-    <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle-twitter:2.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle-twitter:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
   </component>
 </module>
