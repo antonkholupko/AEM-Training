@@ -1,4 +1,4 @@
-package com.epam.training;
+package com.epam.training.rotate;
 
 import com.day.image.Layer;
 

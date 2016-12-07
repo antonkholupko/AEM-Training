@@ -1,10 +1,10 @@
-package com.epam.myproject.impl.servlets;
+package com.epam.training.filter.impl.servlets;
 
 
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.Rendition;
 import com.day.image.Layer;
-import com.epam.training.RotateService;
+import com.epam.training.rotate.RotateService;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.sling.SlingServlet;
 import org.apache.sling.api.SlingHttpServletRequest;

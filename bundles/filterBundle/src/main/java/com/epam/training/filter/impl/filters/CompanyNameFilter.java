@@ -1,4 +1,4 @@
-package com.epam.myproject.impl.filters;
+package com.epam.training.filter.impl.filters;
 
 import java.io.IOException;
 import java.util.Dictionary;

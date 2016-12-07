@@ -142,7 +142,6 @@
                                     <groupId>com.adobe.acs</groupId>
                                     <artifactId>acs-aem-commons-content</artifactId>
                                     <filter>true</filter>
-                                    <!--<target>/apps/training/install</target>-->
                                 </subPackage>
 
                             </subPackages>

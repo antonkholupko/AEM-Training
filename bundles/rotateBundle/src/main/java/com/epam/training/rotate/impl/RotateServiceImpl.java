@@ -1,10 +1,9 @@
-package com.epam.training.impl;
+package com.epam.training.rotate.impl;
 
 import com.day.image.Layer;
+import com.epam.training.rotate.RotateService;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
-
-import com.epam.training.RotateService;
 
 @Service
 @Component(metatype = false)
