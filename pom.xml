@@ -243,6 +243,7 @@
   <modules>
     <module>bundles/filterBundle</module>
     <module>bundles/rotateBundle</module>
+    <module>bundles/searchBundle</module>
     <module>content</module>
   </modules>
 </project>

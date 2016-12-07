@@ -30,6 +30,11 @@
             <artifactId>rotate-bundle</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>search-bundle</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
 
         <dependency>
@@ -78,6 +83,11 @@
                         <embedded>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>rotate-bundle</artifactId>
+                            <target>/apps/aem-project/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>search-bundle</artifactId>
                             <target>/apps/aem-project/install</target>
                         </embedded>
                     </embeddeds>
