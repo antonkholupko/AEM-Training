@@ -26,6 +26,7 @@
     <orderEntry type="library" name="Maven: com.day.commons:day-commons-any:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.day.commons:day-commons-text:1.1.3" level="project" />
     <orderEntry type="module" module-name="search-bundle" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Maven: com.day.cq:cq-search:5.5.4" level="project" />
     <orderEntry type="library" name="Maven: com.day.cq:cq-statistics:5.4.0" level="project" />
     <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle:2.8.2" level="project" />
