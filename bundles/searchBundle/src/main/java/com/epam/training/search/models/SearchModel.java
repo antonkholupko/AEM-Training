@@ -11,6 +11,7 @@ public class SearchModel extends WCMUse {
 
     private String searchWord;
     private String searchPath;
+    private String searchWay;
     private List<String> items;
 
     private SearchServiceBuilder searchServiceBuilder;
@@ -19,20 +20,31 @@ public class SearchModel extends WCMUse {
     @Override
     @Modified
     public void activate() throws Exception {
-        searchServiceManager = getSlingScriptHelper().getService(SearchServiceManager.class);
         searchWord = getProperties().get("searchWord", "");
         searchPath = getProperties().get("searchPath", "");
-        searchWord += "TEST";
-        items = searchServiceManager.getCoincidences(searchWord, searchPath);
-        searchWord += "TEST";
+        searchWay = getProperties().get("searchWay", "");
+
+        if (searchWay.equals("builder")) {
+            searchServiceBuilder = getSlingScriptHelper().getService(SearchServiceBuilder.class);
+            items = searchServiceBuilder.getCoincidences(searchWord, searchPath);
+        } else if (searchWay.equals("manager")) {
+            searchServiceManager = getSlingScriptHelper().getService(SearchServiceManager.class);
+            items = searchServiceManager.getCoincidences(searchWord, searchPath);
+        } else {
+            searchWay = "No such serching ways";
+        }
     }
 
     public String getSearchWord() {
         return searchWord;
     }
+
     public String getSearchPath() {
         return searchPath;
     }
+
+    public String getSearchWay() {return searchWay;}
+
     public List<String> getItems() {
         return items;
     }

@@ -29,7 +29,7 @@ public class SearchServiceManagerImpl implements SearchServiceManager {
         List<String> items = new ArrayList<String>();
         try {
             ResourceResolver resourceResolver = resourceResolverFactory
-                    .getServiceResourceResolver(null);
+                    .getAdministrativeResourceResolver(null);
             Session session = resourceResolver.adaptTo(Session.class);
             QueryManager queryManager = session.getWorkspace().getQueryManager();
             Query query = queryManager.createQuery("SELECT * FROM [dam:Asset] AS s WHERE ISDESCENDANTNODE(s,'"
