@@ -1,7 +1,8 @@
 package com.epam.training.search.services.impl;
 
-import com.epam.training.search.services.SearchServiceManager;
+import com.epam.training.search.services.SearchService;
 import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.sling.api.resource.LoginException;
@@ -18,9 +19,10 @@ import javax.jcr.query.QueryResult;
 import java.util.ArrayList;
 import java.util.List;
 
+@Property(name = "resolver", value = "manager")
 @Service
 @Component(metatype = false)
-public class SearchServiceManagerImpl implements SearchServiceManager {
+public class SearchServiceManagerImpl implements SearchService {
 
     @Reference
     private ResourceResolverFactory resourceResolverFactory;

@@ -1,8 +1,7 @@
 package com.epam.training.search.models;
 
 import com.adobe.cq.sightly.WCMUse;
-import com.epam.training.search.services.SearchServiceBuilder;
-import com.epam.training.search.services.SearchServiceManager;
+import com.epam.training.search.services.SearchService;
 import org.apache.felix.scr.annotations.Modified;
 
 import java.util.List;
@@ -14,8 +13,7 @@ public class SearchModel extends WCMUse {
     private String searchWay;
     private List<String> items;
 
-    private SearchServiceBuilder searchServiceBuilder;
-    private SearchServiceManager searchServiceManager;
+    private SearchService searchService;
 
     @Override
     @Modified
@@ -25,11 +23,11 @@ public class SearchModel extends WCMUse {
         searchWay = getProperties().get("searchWay", "");
 
         if (searchWay.equals("builder")) {
-            searchServiceBuilder = getSlingScriptHelper().getService(SearchServiceBuilder.class);
-            items = searchServiceBuilder.getCoincidences(searchWord, searchPath);
+            SearchService[] searchServices = getSlingScriptHelper().getServices(SearchService.class, "(resolver=builder)");
+            items = searchServices[0].getCoincidences(searchWord, searchPath);
         } else if (searchWay.equals("manager")) {
-            searchServiceManager = getSlingScriptHelper().getService(SearchServiceManager.class);
-            items = searchServiceManager.getCoincidences(searchWord, searchPath);
+            SearchService[] searchServices = getSlingScriptHelper().getServices(SearchService.class, "(resolver=manager)");
+            items = searchServices[0].getCoincidences(searchWord, searchPath);
         } else {
             searchWay = "No such serching ways";
         }

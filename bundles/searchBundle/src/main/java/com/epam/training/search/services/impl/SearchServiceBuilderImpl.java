@@ -5,8 +5,9 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
-import com.epam.training.search.services.SearchServiceBuilder;
+import com.epam.training.search.services.SearchService;
 import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.sling.api.resource.LoginException;
@@ -20,9 +21,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Property(name = "resolver", value = "builder")
 @Service
 @Component(metatype = false)
-public class SearchServiceBuilderImpl implements SearchServiceBuilder {
+public class SearchServiceBuilderImpl implements SearchService {
 
     @Reference
     private QueryBuilder queryBuilder;
