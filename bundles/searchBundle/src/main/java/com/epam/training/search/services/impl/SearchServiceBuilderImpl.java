@@ -29,14 +29,12 @@ public class SearchServiceBuilderImpl implements SearchService {
     @Reference
     private QueryBuilder queryBuilder;
 
-    @Reference
+    /*@Reference
     private ResourceResolverFactory resourceResolverFactory;
-
-    public List<String> getCoincidences(String searchWord, String searchPath) {
+*/
+    public List<String> getCoincidences(String searchWord, String searchPath, ResourceResolver resourceResolver) {
         List<String> items = new ArrayList<String>();
         try {
-            ResourceResolver resourceResolver = resourceResolverFactory
-                    .getAdministrativeResourceResolver(null);
             Session session = resourceResolver.adaptTo(Session.class);
             Map<String, String> propertyMap = new HashMap<String, String>();
             propertyMap.put("fulltext", searchWord);
@@ -47,8 +45,6 @@ public class SearchServiceBuilderImpl implements SearchService {
             for(Hit hit : searchResult.getHits()) {
                 items.add(hit.getPath());
             }
-        } catch (LoginException ex) {
-            ex.printStackTrace();
         } catch (RepositoryException ex) {
             ex.printStackTrace();
         }

@@ -24,14 +24,12 @@ import java.util.List;
 @Component(metatype = false)
 public class SearchServiceManagerImpl implements SearchService {
 
-    @Reference
+    /*@Reference
     private ResourceResolverFactory resourceResolverFactory;
-
-    public List<String> getCoincidences(String searchWord, String searchPath) {
+*/
+    public List<String> getCoincidences(String searchWord, String searchPath, ResourceResolver resourceResolver) {
         List<String> items = new ArrayList<String>();
         try {
-            ResourceResolver resourceResolver = resourceResolverFactory
-                    .getAdministrativeResourceResolver(null);
             Session session = resourceResolver.adaptTo(Session.class);
             QueryManager queryManager = session.getWorkspace().getQueryManager();
             Query query = queryManager.createQuery("SELECT * FROM [dam:Asset] AS s WHERE ISDESCENDANTNODE(s,'"
@@ -42,8 +40,6 @@ public class SearchServiceManagerImpl implements SearchService {
                 Node node = nodes.nextNode();
                 items.add(node.getPath());
             }
-        } catch (LoginException ex) {
-            ex.printStackTrace();
         } catch (RepositoryException ex) {
             ex.printStackTrace();
         }

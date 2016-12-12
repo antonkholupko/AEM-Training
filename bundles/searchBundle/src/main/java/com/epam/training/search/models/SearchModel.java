@@ -5,9 +5,11 @@ import com.adobe.cq.sightly.WCMUse;
 import com.epam.training.search.factories.SearchFactory;
 import com.epam.training.search.services.SearchService;
 import aQute.bnd.annotation.component.Modified;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 
 import javax.jcr.Session;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchModel extends WCMUse {
@@ -25,12 +27,10 @@ public class SearchModel extends WCMUse {
         searchWord = getProperties().get("searchWord", "");
         searchPath = getProperties().get("searchPath", "");
         searchWay = getProperties().get("searchWay", "");
-
-        Session session = getRequest().getResourceResolver().adaptTo(Session.class);
+        ResourceResolver resourceResolver = getResourceResolver();
         SlingScriptHelper slingScriptHelper = getSlingScriptHelper();
-
-        items = SearchFactory.getSearchFactory(searchWay, slingScriptHelper).getCoincidences(searchWord, searchPath);
-
+        items = SearchFactory.getSearchFactory(searchWay, slingScriptHelper).getCoincidences(searchWord, searchPath, resourceResolver);
+        
     }
 
     public String getSearchWord() {
