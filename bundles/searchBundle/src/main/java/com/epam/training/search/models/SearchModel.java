@@ -1,9 +1,13 @@
 package com.epam.training.search.models;
 
-import com.adobe.cq.sightly.WCMUse;
-import com.epam.training.search.services.SearchService;
-import org.apache.felix.scr.annotations.Modified;
 
+import com.adobe.cq.sightly.WCMUse;
+import com.epam.training.search.factories.SearchFactory;
+import com.epam.training.search.services.SearchService;
+import aQute.bnd.annotation.component.Modified;
+import org.apache.sling.api.scripting.SlingScriptHelper;
+
+import javax.jcr.Session;
 import java.util.List;
 
 public class SearchModel extends WCMUse {
@@ -22,15 +26,11 @@ public class SearchModel extends WCMUse {
         searchPath = getProperties().get("searchPath", "");
         searchWay = getProperties().get("searchWay", "");
 
-        if (searchWay.equals("builder")) {
-            SearchService[] searchServices = getSlingScriptHelper().getServices(SearchService.class, "(resolver=builder)");
-            items = searchServices[0].getCoincidences(searchWord, searchPath);
-        } else if (searchWay.equals("manager")) {
-            SearchService[] searchServices = getSlingScriptHelper().getServices(SearchService.class, "(resolver=manager)");
-            items = searchServices[0].getCoincidences(searchWord, searchPath);
-        } else {
-            searchWay = "No such serching ways";
-        }
+        Session session = getRequest().getResourceResolver().adaptTo(Session.class);
+        SlingScriptHelper slingScriptHelper = getSlingScriptHelper();
+
+        items = SearchFactory.getSearchFactory(searchWay, slingScriptHelper).getCoincidences(searchWord, searchPath);
+
     }
 
     public String getSearchWord() {
