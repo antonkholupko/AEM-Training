@@ -24,9 +24,6 @@ import java.util.List;
 @Component(metatype = false)
 public class SearchServiceManagerImpl implements SearchService {
 
-    /*@Reference
-    private ResourceResolverFactory resourceResolverFactory;
-*/
     public List<String> getCoincidences(String searchWord, String searchPath, ResourceResolver resourceResolver) {
         List<String> items = new ArrayList<String>();
         try {

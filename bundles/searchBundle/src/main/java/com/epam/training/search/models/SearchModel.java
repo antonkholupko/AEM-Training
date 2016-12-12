@@ -30,7 +30,7 @@ public class SearchModel extends WCMUse {
         ResourceResolver resourceResolver = getResourceResolver();
         SlingScriptHelper slingScriptHelper = getSlingScriptHelper();
         items = SearchFactory.getSearchFactory(searchWay, slingScriptHelper).getCoincidences(searchWord, searchPath, resourceResolver);
-        
+
     }
 
     public String getSearchWord() {

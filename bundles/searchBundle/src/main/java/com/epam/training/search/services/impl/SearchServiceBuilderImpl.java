@@ -29,9 +29,6 @@ public class SearchServiceBuilderImpl implements SearchService {
     @Reference
     private QueryBuilder queryBuilder;
 
-    /*@Reference
-    private ResourceResolverFactory resourceResolverFactory;
-*/
     public List<String> getCoincidences(String searchWord, String searchPath, ResourceResolver resourceResolver) {
         List<String> items = new ArrayList<String>();
         try {
