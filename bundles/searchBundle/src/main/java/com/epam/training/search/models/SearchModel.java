@@ -8,8 +8,6 @@ import aQute.bnd.annotation.component.Modified;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 
-import javax.jcr.Session;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchModel extends WCMUse {
@@ -30,7 +28,6 @@ public class SearchModel extends WCMUse {
         ResourceResolver resourceResolver = getResourceResolver();
         SlingScriptHelper slingScriptHelper = getSlingScriptHelper();
         items = SearchFactory.getSearchFactory(searchWay, slingScriptHelper).getCoincidences(searchWord, searchPath, resourceResolver);
-
     }
 
     public String getSearchWord() {
