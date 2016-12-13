@@ -1,15 +1,12 @@
-package com.epam.training.search.services.impl;
+package com.epam.training.search.util.impl;
 
 import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
-import com.epam.training.search.services.SearchService;
-import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.Property;
-import org.apache.felix.scr.annotations.Reference;
-import org.apache.felix.scr.annotations.Service;
+import com.epam.training.search.util.SearchService;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
 
 import javax.jcr.RepositoryException;
@@ -19,22 +16,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Property(name = "resolver", value = "builder")
-@Service
-@Component(metatype = false)
 public class SearchServiceBuilderImpl implements SearchService {
 
-    @Reference
-    private QueryBuilder queryBuilder;
+    private static final String FULLTEXT_PROPERTY = "fulltext";
+    private static final String PATH_PROPERTY = "path";
+    private static final String TYPE_PROPERTY = "type";
 
-    public List<String> getCoincidences(String searchWord, String searchPath, ResourceResolver resourceResolver) {
+    public List<String> getCoincidences(String searchWord, String searchPath,
+                                        SlingHttpServletRequest request) {
         List<String> items = new ArrayList<String>();
         try {
+            ResourceResolver resourceResolver = request.getResourceResolver();
             Session session = resourceResolver.adaptTo(Session.class);
+            QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
             Map<String, String> propertyMap = new HashMap<String, String>();
-            propertyMap.put("fulltext", searchWord);
-            propertyMap.put("path", searchPath);
-            propertyMap.put("type", "dam:Asset");
+            propertyMap.put(FULLTEXT_PROPERTY, searchWord);
+            propertyMap.put(PATH_PROPERTY, searchPath);
+            propertyMap.put(TYPE_PROPERTY, "dam:Asset");
             Query query = queryBuilder.createQuery(PredicateGroup.create(propertyMap), session);
             SearchResult searchResult = query.getResult();
             for(Hit hit : searchResult.getHits()) {

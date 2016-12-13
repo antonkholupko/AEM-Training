@@ -1,9 +1,7 @@
-package com.epam.training.search.services.impl;
+package com.epam.training.search.util.impl;
 
-import com.epam.training.search.services.SearchService;
-import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.Property;
-import org.apache.felix.scr.annotations.Service;
+import com.epam.training.search.util.SearchService;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
 
 import javax.jcr.Node;
@@ -16,14 +14,13 @@ import javax.jcr.query.QueryResult;
 import java.util.ArrayList;
 import java.util.List;
 
-@Property(name = "resolver", value = "manager")
-@Service
-@Component(metatype = false)
 public class SearchServiceManagerImpl implements SearchService {
 
-    public List<String> getCoincidences(String searchWord, String searchPath, ResourceResolver resourceResolver) {
+    public List<String> getCoincidences(String searchWord, String searchPath,
+                                        SlingHttpServletRequest request) {
         List<String> items = new ArrayList<String>();
         try {
+            ResourceResolver resourceResolver = request.getResourceResolver();
             Session session = resourceResolver.adaptTo(Session.class);
             QueryManager queryManager = session.getWorkspace().getQueryManager();
             Query query = queryManager.createQuery("SELECT * FROM [dam:Asset] AS s WHERE ISDESCENDANTNODE(s,'"

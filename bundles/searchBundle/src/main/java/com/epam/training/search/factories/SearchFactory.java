@@ -2,17 +2,21 @@ package com.epam.training.search.factories;
 
 
 import aQute.bnd.annotation.component.Component;
-import com.epam.training.search.services.SearchService;
-import org.apache.sling.api.scripting.SlingScriptHelper;
+import com.epam.training.search.util.SearchService;
+import com.epam.training.search.util.impl.SearchServiceBuilderImpl;
+import com.epam.training.search.util.impl.SearchServiceManagerImpl;
 
 @Component
 public class SearchFactory {
 
-    public static SearchService getSearchFactory(String searchWay, SlingScriptHelper slingScriptHelper) {
-        if (searchWay.equals("builder")) {
-            return slingScriptHelper.getServices(SearchService.class, "(resolver=builder)")[0];
-        } else if (searchWay.equals("manager")){
-            return slingScriptHelper.getServices(SearchService.class, "(resolver=manager)")[0];
+    private static final String BUILDER_SEARCH_WAY = "builder";
+    private static final String MANAGER_SEARCH_WAY = "manager";
+
+    public static SearchService getSearchFactory(String searchWay) {
+        if (searchWay.equals(BUILDER_SEARCH_WAY)) {
+            return new SearchServiceBuilderImpl();
+        } else if (searchWay.equals(MANAGER_SEARCH_WAY)){
+            return new SearchServiceManagerImpl();
         } else {
             return null;
         }
