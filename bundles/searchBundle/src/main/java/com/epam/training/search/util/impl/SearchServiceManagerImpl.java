@@ -16,15 +16,16 @@ import java.util.List;
 
 public class SearchServiceManagerImpl implements SearchService {
 
-    public List<String> getCoincidences(String searchWord, String searchPath,
+    public List<String> getCoincidences(String searchWord, String searchPathOne, String searchPathTwo,
                                         SlingHttpServletRequest request) {
         List<String> items = new ArrayList<String>();
         try {
             ResourceResolver resourceResolver = request.getResourceResolver();
             Session session = resourceResolver.adaptTo(Session.class);
             QueryManager queryManager = session.getWorkspace().getQueryManager();
-            Query query = queryManager.createQuery("SELECT * FROM [dam:Asset] AS s WHERE ISDESCENDANTNODE(s,'"
-                    + searchPath + "') AND CONTAINS(*, '" + searchWord + "')", Query.JCR_SQL2);
+            Query query = queryManager.createQuery("SELECT * FROM [nt:base] AS s WHERE (ISDESCENDANTNODE(s,'"
+                            + searchPathOne + "') or ISDESCENDANTNODE(s,'"
+                            + searchPathTwo + "')) AND CONTAINS(*, '" + searchWord + "')", Query.JCR_SQL2);
             QueryResult result = query.execute();
             NodeIterator nodes = result.getNodes();
             while (nodes.hasNext()) {

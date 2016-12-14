@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SearchService {
 
-    public List<String> getCoincidences(String searchWord, String searchPath,
+    public List<String> getCoincidences(String searchWord, String searchPathOne, String searchPathTwo,
                                         SlingHttpServletRequest request);
 
 }

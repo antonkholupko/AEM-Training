@@ -19,10 +19,9 @@ import java.util.Map;
 public class SearchServiceBuilderImpl implements SearchService {
 
     private static final String FULLTEXT_PROPERTY = "fulltext";
-    private static final String PATH_PROPERTY = "path";
     private static final String TYPE_PROPERTY = "type";
 
-    public List<String> getCoincidences(String searchWord, String searchPath,
+    public List<String> getCoincidences(String searchWord, String searchPathOne, String searchPathTwo,
                                         SlingHttpServletRequest request) {
         List<String> items = new ArrayList<String>();
         try {
@@ -31,8 +30,10 @@ public class SearchServiceBuilderImpl implements SearchService {
             QueryBuilder queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
             Map<String, String> propertyMap = new HashMap<String, String>();
             propertyMap.put(FULLTEXT_PROPERTY, searchWord);
-            propertyMap.put(PATH_PROPERTY, searchPath);
-            propertyMap.put(TYPE_PROPERTY, "dam:Asset");
+            propertyMap.put("group.p.or", "true");
+            propertyMap.put("group.1_path", searchPathOne);
+            propertyMap.put("group.2_path", searchPathTwo);
+            propertyMap.put(TYPE_PROPERTY, "nt:base");
             Query query = queryBuilder.createQuery(PredicateGroup.create(propertyMap), session);
             SearchResult searchResult = query.getResult();
             for(Hit hit : searchResult.getHits()) {
