@@ -29,6 +29,7 @@
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Maven: com.day.cq:cq-search:5.5.4" level="project" />
     <orderEntry type="library" name="Maven: com.day.cq:cq-statistics:5.4.0" level="project" />
+    <orderEntry type="library" name="Maven: aem-training:versioning-bundle:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.5" level="project" />
     <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle-twitter:2.8.2" level="project" />
