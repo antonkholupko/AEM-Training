@@ -245,6 +245,7 @@
     <module>bundles/rotateBundle</module>
     <module>bundles/searchBundle</module>
     <module>bundles/versioningBundle</module>
+    <module>bundles/propertiesBundle</module>
     <module>content</module>
   </modules>
 </project>
