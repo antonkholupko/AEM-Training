@@ -29,7 +29,6 @@ public class SavingJob implements JobConsumer{
     private final Logger LOG = LoggerFactory.getLogger(SavingJob.class);
 
     public JobResult process(final Job job) {
-        LOG.debug("Job process started.");
         Map<String, Object> param = new HashMap<String, Object>();
         param.put(ResourceResolverFactory.USER, "admin");
         param.put(ResourceResolverFactory.PASSWORD, "admin".toCharArray());
@@ -57,7 +56,6 @@ public class SavingJob implements JobConsumer{
 
     private boolean processProperty(String name, Job job, Node rootNode, String propertyPath) throws LoginException, RepositoryException {
         boolean success = true;
-        LOG.debug("1");
         String[] jobId = job.getId().split("/");
         String creatingPath = "var/log/removedProperties/" + jobId[jobId.length - 1];
         LOG.debug(creatingPath);
@@ -80,7 +78,6 @@ public class SavingJob implements JobConsumer{
     }
 
     private Node createNodeObject(Node rootNode, String creatingPath) throws RepositoryException{
-        LOG.debug("2");
         Node node = rootNode;
         for (String item : creatingPath.split("/")) {
             if (!node.hasNode(item)) {
