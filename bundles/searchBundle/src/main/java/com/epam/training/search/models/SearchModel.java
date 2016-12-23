@@ -1,6 +1,7 @@
 package com.epam.training.search.models;
 
 import com.adobe.cq.sightly.WCMUse;
+import com.day.cq.i18n.I18n;
 import com.epam.training.search.factories.SearchFactory;
 import com.epam.training.search.util.SearchService;
 import aQute.bnd.annotation.component.Modified;
@@ -19,6 +20,8 @@ public class SearchModel extends WCMUse {
     private String searchPathOne;
     private String searchPathTwo;
     private String searchWay;
+    private String greeting;
+
     private List<String> items;
 
     private SearchService searchService;
@@ -33,6 +36,10 @@ public class SearchModel extends WCMUse {
         SlingHttpServletRequest request = getRequest();
         items = SearchFactory.getSearchFactory(searchWay).getCoincidences(
                 searchWord, searchPathOne, searchPathTwo, request);
+
+        I18n i18n = new I18n(getRequest());
+        greeting = i18n.get("csv.greeting");
+
     }
 
     public String getSearchWord() {
@@ -51,5 +58,9 @@ public class SearchModel extends WCMUse {
 
     public List<String> getItems() {
         return items;
+    }
+
+    public String getGreeting() {
+        return greeting;
     }
 }
