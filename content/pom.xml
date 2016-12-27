@@ -45,6 +45,11 @@
             <artifactId>properties-bundle</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>workflow-bundle</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
 
         <dependency>
@@ -108,6 +113,11 @@
                         <embedded>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>properties-bundle</artifactId>
+                            <target>/apps/aem-project/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>workflow-bundle</artifactId>
                             <target>/apps/aem-project/install</target>
                         </embedded>
                     </embeddeds>

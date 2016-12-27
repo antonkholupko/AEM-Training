@@ -246,6 +246,7 @@
     <module>bundles/searchBundle</module>
     <module>bundles/versioningBundle</module>
     <module>bundles/propertiesBundle</module>
+    <module>bundles/workflowBundle</module>
     <module>content</module>
   </modules>
 </project>
