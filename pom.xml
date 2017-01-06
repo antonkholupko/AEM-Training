@@ -247,6 +247,7 @@
     <module>bundles/versioningBundle</module>
     <module>bundles/propertiesBundle</module>
     <module>bundles/workflowBundle</module>
+    <module>bundles/userManagementBundle</module>
     <module>content</module>
   </modules>
 </project>

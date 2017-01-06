@@ -32,6 +32,7 @@
     <orderEntry type="module" module-name="versioning-bundle" />
     <orderEntry type="module" module-name="properties-bundle" />
     <orderEntry type="module" module-name="workflow-bundle" />
+    <orderEntry type="module" module-name="management-bundle" />
     <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.5" level="project" />
     <orderEntry type="library" name="Maven: com.adobe.acs:acs-aem-commons-bundle-twitter:2.8.2" level="project" />
